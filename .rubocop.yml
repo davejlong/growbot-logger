@@ -1,0 +1,6 @@
+Documentation:
+  Exclude:
+    - spec/**/*_spec.rb
+ClassAndModuleChildren:
+  Exclude:
+    - spec/**/*_spec.rb
