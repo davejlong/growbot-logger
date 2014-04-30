@@ -1,5 +1,9 @@
 require_relative '../lib/growbot/logger'
 
+Dir[File.join(File.dirname(__FILE__), 'support', '**', '*.rb')].each do |sup|
+  require sup
+end
+
 RSpec.configure do |config|
   # These two settings work together to allow you to limit a spec run
   # to individual examples or groups you care about by tagging them with
