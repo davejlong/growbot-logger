@@ -12,11 +12,30 @@ module Growbot
       #   Collection to read data from within Arango
       attr_accessor :db_collection
 
+      # @!attribute [rw] arduino_path
+      #   Path to the Arduino serial port (example: /dev/ttyACM0)
+      attr_accessor :arduino_path
+
+      # @!attribute [r] pin_map
+      #   Can either be a path to a YML file to read pin mappings from or a
+      #   hash of pin mappings. See examples for how to set pin mappings
+      attr_reader :pin_map
+
       # Attribute writer for arango_url
       # @param [String] arango_url
       def arango_url=(arango_url)
         @arango_url = arango_url
         @database = nil
+      end
+
+      # Sets the pin map. Map argument can either be a file or a hash
+      # @param [Hash, String] map
+      def pin_map=(map)
+        if map.is_a? Hash
+          @pin_map = map
+        else
+          @pin_map = YAML.load_file map if File.exist? map
+        end
       end
 
       # Database accessor

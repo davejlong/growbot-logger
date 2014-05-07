@@ -4,6 +4,7 @@ Documentation:
 ClassAndModuleChildren:
   Exclude:
     - spec/**/*_spec.rb
+    - spec/support/*.rb
 HandleExceptions:
   Exclude:
     - spec/support/arango.rb

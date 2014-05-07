@@ -1,5 +1,6 @@
 require_relative './logger/version'
 require_relative './logger/configuration'
+require_relative './logger/arduino_reader'
 
 # Home gardening with Raspberry Pi, Arduino and RUBY!
 module Growbot

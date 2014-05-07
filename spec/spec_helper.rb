@@ -19,7 +19,7 @@ RSpec.configure do |config|
     # RSpec filters the backtrace by default so as not to be so noisy.
     # This causes the full backtrace to be printed when running a single
     # spec file (e.g. to troubleshoot a particular spec failure).
-    config.full_backtrace = true
+    # config.full_backtrace = true
 
     # Use the documentation formatter for detailed output,
     # unless a formatter has already been configured

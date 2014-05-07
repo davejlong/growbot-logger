@@ -23,5 +23,29 @@ module Growbot::Logger
         expect(config.collection).to be_instance_of Ashikawa::Core::Collection
       end
     end
+
+    describe '#pin_map' do
+      context 'with file as parameter' do
+        let(:map_file) do
+          map = File.dirname __FILE__
+          map = File.join(map, '..', '..', '..', 'support', 'pin_mapping.yml')
+          File.expand_path map
+        end
+
+        it 'can receive a file to read pin mappings from' do
+          config.pin_map = map_file
+
+          # Check if pin_map is populated
+        end
+
+        # TODO: Test that pin map is set correctly
+      end
+
+      context 'with hash as parameter' do
+        # TODO: Test that accepts a hash
+        #
+        # TODO: Test that sets pin map correctly
+      end
+    end
   end
 end
