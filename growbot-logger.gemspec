@@ -8,9 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Growbot::Logger::VERSION
   spec.authors       = ["David Long"]
   spec.email         = ["dave@davejlong.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Sensor logger for Growbot}
+  spec.homepage      = "http://github.com/davejlong/growbot-logger"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -22,5 +21,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
 
   spec.add_runtime_dependency 'ashikawa-core', '~> 0.10'
-  spec.add_runtime_dependency 'arduino_firmata', '~> 0.3.7'
+  spec.add_runtime_dependency 'arduino_firmata', '~> 0.3'
 end
