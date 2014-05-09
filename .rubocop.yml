@@ -1,10 +1,13 @@
+AllCops:
+  Exclude:
+    - bin/*
+    - spec/support/*.rb
 Documentation:
   Exclude:
     - spec/**/*_spec.rb
 ClassAndModuleChildren:
   Exclude:
     - spec/**/*_spec.rb
-    - spec/support/*.rb
 HandleExceptions:
   Exclude:
     - spec/support/arango.rb

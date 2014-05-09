@@ -32,20 +32,29 @@ module Growbot::Logger
           File.expand_path map
         end
 
-        it 'can receive a file to read pin mappings from' do
+        it 'sets the pin map' do
           config.pin_map = map_file
-
-          # Check if pin_map is populated
+          expect(config.pin_map[:moisture]).to be_instance_of Array
+          expect(config.pin_map[:light]).to be_instance_of Array
         end
-
-        # TODO: Test that pin map is set correctly
       end
 
       context 'with hash as parameter' do
-        # TODO: Test that accepts a hash
-        #
-        # TODO: Test that sets pin map correctly
+        let(:map) { { moisture: [4, 5], light: [4, 5] } }
+
+        it 'sets the pin map' do
+          config.pin_map = map
+          expect(config.pin_map[:moisture]).to be_instance_of Array
+          expect(config.pin_map[:light]).to be_instance_of Array
+        end
       end
     end
+
+    # Can't test this unless Arduino connected
+    # describe '#firmata' do
+    #   it 'returns an instance of the ArduinoFirmata library' do
+    #     expect(config.firmata).to be_instance_of ArduinoFirmata::Arduino
+    #   end
+    # end
   end
 end

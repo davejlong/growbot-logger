@@ -1,4 +1,5 @@
 require 'ashikawa-core'
+require 'arduino_firmata'
 
 module Growbot
   module Logger
@@ -33,8 +34,13 @@ module Growbot
       def pin_map=(map)
         if map.is_a? Hash
           @pin_map = map
+        elsif map.is_a?(String) && File.exist?(map)
+          @pin_map = YAML.load_file(map).reduce({}) do |memo, (key, value)|
+            memo[key.to_sym] = value
+            memo
+          end
         else
-          @pin_map = YAML.load_file map if File.exist? map
+          fail 'Map was not valid'
         end
       end
 
@@ -50,6 +56,13 @@ module Growbot
       # @return [Ashikawa::Core::Collection] Instance of Arango Collection
       def collection
         database[@db_collection]
+      end
+
+      # Use the Arduino Path to create a new instance of the ArduinoFirmata
+      # class
+      # @return [ArduinoFirmata::Arduino] Instace of the ArduinoFirmata object
+      def firmata
+        ArduinoFirmata.connect @arduino_path
       end
     end
   end
