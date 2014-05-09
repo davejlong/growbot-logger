@@ -1,4 +1,5 @@
 require_relative "logger/version"
+require 'yaml'
 require 'ashikawa-core'
 require 'arduino_firmata'
 
@@ -15,7 +16,7 @@ module Growbot
       end
 
       # Take the readings
-      readings = {}
+      readings = {time: Time.now.to_i*1000}
       pin_map.each do |key, value|
         if value.is_a? Array
           readings[key] = value.inject(0.0) { |sum, n| sum += arduino.analog_read n }.to_f / value.length

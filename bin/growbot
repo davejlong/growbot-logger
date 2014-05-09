@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/growbot/logger'
+
+pin_map = File.expand_path(ARGV[0] || './pin_map.yml')
+
+Growbot::Logger.read pin_map
